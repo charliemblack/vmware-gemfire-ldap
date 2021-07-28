@@ -16,10 +16,10 @@
 package io.pivotal.gemfire.ldap;
 
 import org.apache.geode.distributed.DistributedSystem;
-import org.apache.geode.internal.logging.LogService;
 import org.apache.geode.security.AuthenticationFailedException;
 import org.apache.geode.security.ResourcePermission;
 import org.apache.geode.security.SecurityManager;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -30,7 +30,7 @@ import java.util.Properties;
 
 public class GemFireLDAPSecurityManager implements SecurityManager {
 
-    private static final Logger logger = LogService.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     private org.apache.shiro.mgt.SecurityManager securityManager;
 
