@@ -31,7 +31,7 @@ DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+ScavengeBeforeFullGC"
 DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+CMSScavengeBeforeRemark"
 DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+UseCompressedOops"
 DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --mcast-port=0"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS  --classpath=${APP_HOME}/build/libs/pivotal-gemfire-ldap-0.0.1-SNAPSHOT.jar:${APP_HOME}/build/classes/java/test"
+DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS  --classpath=${APP_HOME}/build/libs/vmware-gemfire-ldap-0.0.1-SNAPSHOT.jar:${APP_HOME}/build/classes/java/test"
 
 DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-Dgf-ldap-ssl-keystore=${APP_HOME}/certs/ldap.jks"
 DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-Dgf-ldap-ssl-truststore=${APP_HOME}/certs/ldap.jks"

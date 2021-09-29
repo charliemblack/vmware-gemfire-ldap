@@ -15,7 +15,7 @@
 
 package io.pivotal.gemfire.ldap;
 
-import org.apache.geode.internal.logging.LogService;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -43,7 +43,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class GemFireLDAPRealm extends ActiveDirectoryRealm implements InitializeIniSection {
 
     public static final String REALM_NAME = "GemFireLDAPRealm";
-    private static final Logger logger = LogService.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     private static final String USERDN_SUBSTITUTION_TOKEN = "{0}";
     private String userDnPrefix;
     private String userDnSuffix;

@@ -18,7 +18,7 @@ package io.pivotal.gemfire.ldap;
 import org.apache.geode.cache.*;
 import org.apache.geode.internal.cache.GemFireCacheImpl;
 import org.apache.geode.internal.cache.InternalRegionArguments;
-import org.apache.geode.internal.logging.LogService;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
@@ -29,7 +29,7 @@ import java.util.Set;
 
 public class GemFireShiroCache<K, V> implements Cache<K, V> {
 
-    private static final Logger logger = LogService.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     private static final Object classLock = new Object();
 
     private static final String REGION_PREFIX = "_ldap_";
