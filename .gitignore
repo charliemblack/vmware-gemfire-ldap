@@ -25,3 +25,5 @@ certs/
 .idea/
 
 data/
+
+gradle.properties

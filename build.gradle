@@ -14,14 +14,14 @@
  */
 
 ext {
-    gemfireVersion = '9.10.9'
+    gemfireVersion = '9.10.5'
     apachedsVersion = '2.0.0-M24'
     springShellVersion = '1.2.0.RELEASE'
     junitVersion = '4.12'
 }
 
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 group = 'io.pivotal.field.gemfire'
 version = '0.0.1-SNAPSHOT'
@@ -30,7 +30,11 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven {
-        url 'https://repo.spring.io/libs-release'
+      credentials {
+        username "$gemfireReleaseRepoUser"
+        password "$gemfireReleaseRepoPassword"
+      }
+      url "https://commercial-repo.pivotal.io/data3/gemfire-release-repo/gemfire"
     }
 }
 
@@ -39,15 +43,15 @@ configurations {
 }
 
 dependencies {
-    compile "io.pivotal.gemfire:geode-core:$gemfireVersion"
-    compile "io.pivotal.gemfire:geode-cq:$gemfireVersion"
-    compile "io.pivotal.gemfire:geode-wan:$gemfireVersion"
-    testCompile "org.springframework.shell:spring-shell:$springShellVersion"
-    testCompile "org.apache.directory.server:apacheds-all:$apachedsVersion"
-    testCompile "org.apache.directory.server:apacheds-server-integ:$apachedsVersion"
-    testCompile "org.apache.directory.server:apacheds-core-integ:$apachedsVersion"
-    testCompile "org.apache.directory.server:apacheds-server-jndi:$apachedsVersion"
-    testCompile "junit:junit:$junitVersion"
+    implementation "io.pivotal.gemfire:geode-core:$gemfireVersion"
+    implementation "io.pivotal.gemfire:geode-cq:$gemfireVersion"
+    implementation "io.pivotal.gemfire:geode-wan:$gemfireVersion"
+    testImplementation "org.springframework.shell:spring-shell:$springShellVersion"
+    testImplementation "org.apache.directory.server:apacheds-all:$apachedsVersion"
+    testImplementation "org.apache.directory.server:apacheds-server-integ:$apachedsVersion"
+    testImplementation "org.apache.directory.server:apacheds-core-integ:$apachedsVersion"
+    testImplementation "org.apache.directory.server:apacheds-server-jndi:$apachedsVersion"
+    testImplementation "junit:junit:$junitVersion"
 }
 
 task generateCerts() {
