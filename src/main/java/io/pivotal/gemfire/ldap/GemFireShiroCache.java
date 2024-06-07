@@ -46,7 +46,12 @@ public class GemFireShiroCache<K, V> implements Cache<K, V> {
     private Region<K, V> getRegion() throws CacheException {
         if (region == null) {
             // If the cache isn't instantiated don't cache - fall through
-            GemFireCacheImpl gemFireCache = (GemFireCacheImpl) CacheFactory.getAnyInstance();
+            GemFireCacheImpl gemFireCache = null;
+            try {
+                gemFireCache = (GemFireCacheImpl) CacheFactory.getAnyInstance();
+            } catch (Exception e) {
+                logger.debug("GemFire DS isn't 100% ready for caching LDAP results, will attempt later");
+            }
             if (gemFireCache != null) {
                 //Create the LDAP caching region
                 atomicCreateRegion(gemFireCache);
