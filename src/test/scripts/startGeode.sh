@@ -18,19 +18,11 @@ cd "`dirname \"$PRG\"`/../../.." >&-
 APP_HOME="`pwd -P`"
 cd "$SAVED" >&-
 
-DEFAULT_LOCATOR_MEMORY="--initial-heap=128m --max-heap=128m"
+DEFAULT_LOCATOR_MEMORY="--initial-heap=1g --max-heap=1g"
 
 DEFAULT_SERVER_MEMORY="--initial-heap=2g --max-heap=2g"
 
-DEFAULT_JVM_OPTS=" --J=-XX:+UseParNewGC"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+UseConcMarkSweepGC"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:CMSInitiatingOccupancyFraction=50"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+CMSParallelRemarkEnabled"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+UseCMSInitiatingOccupancyOnly"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+ScavengeBeforeFullGC"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+CMSScavengeBeforeRemark"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-XX:+UseCompressedOops"
-DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --mcast-port=0"
+DEFAULT_JVM_OPTS="--mcast-port=0"
 DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS  --classpath=${APP_HOME}/build/libs/vmware-gemfire-ldap-0.0.1-SNAPSHOT.jar:${APP_HOME}/build/classes/java/test"
 
 DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --J=-Dgf-ldap-ssl-keystore=${APP_HOME}/certs/ldap.jks"

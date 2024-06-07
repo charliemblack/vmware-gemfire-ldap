@@ -14,16 +14,17 @@
  */
 
 ext {
-    gemfireVersion = '9.10.5'
+    gemfireVersion = '10.1.0'
     apachedsVersion = '2.0.0-M24'
     springShellVersion = '1.2.0.RELEASE'
-    junitVersion = '4.12'
+    junitVersion = '5.8.1'
+    log4jVersion = '2.22.1'
 }
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
-group = 'io.pivotal.field.gemfire'
+group = 'dev.gemfire'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -39,19 +40,21 @@ repositories {
 }
 
 configurations {
-    testCompile.exclude group: "org.apache.directory.api", module: "api-ldap-schema-data"
+    testImplementation.exclude group: "org.apache.directory.api", module: "api-ldap-schema-data"
 }
 
 dependencies {
-    implementation "io.pivotal.gemfire:geode-core:$gemfireVersion"
-    implementation "io.pivotal.gemfire:geode-cq:$gemfireVersion"
-    implementation "io.pivotal.gemfire:geode-wan:$gemfireVersion"
+    implementation "com.vmware.gemfire:gemfire-core:$gemfireVersion"
+    implementation "com.vmware.gemfire:gemfire-logging:$gemfireVersion"
+    testImplementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
     testImplementation "org.springframework.shell:spring-shell:$springShellVersion"
     testImplementation "org.apache.directory.server:apacheds-all:$apachedsVersion"
+    testImplementation "org.apache.directory.server:apacheds-core:$apachedsVersion"
     testImplementation "org.apache.directory.server:apacheds-server-integ:$apachedsVersion"
     testImplementation "org.apache.directory.server:apacheds-core-integ:$apachedsVersion"
     testImplementation "org.apache.directory.server:apacheds-server-jndi:$apachedsVersion"
-    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
 }
 
 task generateCerts() {
